@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 public class Main {
 
+  public void printAnimals(ArrayList<AbstractAnimals> animals, CheckAnimal tester) {
+
+  }
+
   public static void main(String[] args) {
     // Mammals
     Mammals panda = new Mammals("Panda", 1869);
@@ -49,6 +53,5 @@ public class Main {
     animalsList.add(catfish);
     animalsList.add(perch);
 
-    System.out.println(animalsList);
   }
 }
