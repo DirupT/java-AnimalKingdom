@@ -4,8 +4,18 @@ import java.util.ArrayList;
 
 public class Main {
 
-  public void printAnimals(ArrayList<AbstractAnimals> animals, CheckAnimal tester) {
+  public static void printAnimals(ArrayList<AbstractAnimals> animals, CheckAnimal tester) {
+    for (AbstractAnimals a : animals) {
+      if (tester.test(a)) {
+        System.out.println("Name: " + a.getName() + ", Year Named: " + a.getYearNamed());
+      }
+    }
+  }
 
+  public static void printAnimals(ArrayList<AbstractAnimals> animals) {
+    for (AbstractAnimals a : animals) {
+      System.out.println("Name: " + a.getName() + ", Year Named: " + a.getYearNamed());
+    }
   }
 
   public static void main(String[] args) {
@@ -53,5 +63,29 @@ public class Main {
     animalsList.add(catfish);
     animalsList.add(perch);
 
+    System.out.println("\nAnimals in descending order by year named:\n");
+    animalsList.sort((a1, a2) -> a2.getYearNamed() - a1.getYearNamed());
+    printAnimals(animalsList);
+
+    System.out.println("\nAnimals in alphabetical order:\n");
+    animalsList.sort((a1, a2) -> a1.getName().compareToIgnoreCase(a2.getName()));
+    printAnimals(animalsList);
+
+    System.out.println("\nAnimals by how they move:\n");
+    animalsList.sort((a1, a2) -> a1.move().compareToIgnoreCase(a2.move()));
+    printAnimals(animalsList);
+
+    System.out.println("\nAnimals that breath with lungs:\n");
+    printAnimals(animalsList, a -> a.breath() == "Lungs");
+
+    System.out.println("\nAnimals that breath with lungs and named in 1758:\n");
+    printAnimals(animalsList, a -> a.breath() == "Lungs" && a.getYearNamed() == 1758);
+
+    System.out.println("\nAnimals that breath with lungs and lay eggs:\n");
+    printAnimals(animalsList, a -> a.breath() == "Lungs" && a.reproduce() == "Eggs");
+
+    System.out.println("\nAnimals that were named in 1758 in alphabetical order:\n");
+    animalsList.sort((a1, a2) -> a1.getName().compareToIgnoreCase(a2.getName()));
+    printAnimals(animalsList, a -> a.getYearNamed() == 1758);
   }
 }
