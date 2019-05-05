@@ -2,7 +2,7 @@ package animals;
 
 public class Fish extends AbstractAnimals {
 
-  public Fish(String name, String yearNamed) {
+  public Fish(String name, int yearNamed) {
     super(name, yearNamed);
   }
 

@@ -25,7 +25,7 @@ public abstract class AbstractAnimals {
     return name;
   }
 
-  public String getYearNamed() {
+  public int getYearNamed() {
     return yearNamed;
   }
 
